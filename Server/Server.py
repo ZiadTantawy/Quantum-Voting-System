@@ -223,7 +223,7 @@ async def cast_vote(vote_request: VoteRequest):
         already_voted = cursor.fetchone()[0]
 
         if already_voted > 0:
-            raise HTTPException(status_code=400, detail="You have already voted")
+            raise HTTPException(status_code = 400, detail="You have already voted")
 
         # 3. Generate QRNG and hash SSN + candidate_id + QRNG
         qrng_value_bits = quantum_random_number_generator(32)  # Generate quantum random number
@@ -255,4 +255,4 @@ async def cast_vote(vote_request: VoteRequest):
 
     except Exception as e:
         logger.error(f"Error casting vote: {e}")
-        raise HTTPException(status_code=500, detail="Internal server error")
+        raise e
