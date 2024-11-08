@@ -22,3 +22,8 @@ def quantum_random_number_generator(num_bits):
   # Extract the random bits string from the single outcome
   random_bits = list(single_counts.keys())[0]
   return random_bits
+
+num = quantum_random_number_generator(8)
+random_integer = int(num, 2)
+
+print(f"Random integer: {random_integer}")
