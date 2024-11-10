@@ -15,8 +15,10 @@ def quantum_random_number_generator(num_bits):
   # Use the Aer's qasm simulator to simulate the circuit
   simulator = AerSimulator()
   # Execute the circuit on the simulator and get the result
-  result = simulator.run(qc, shots=1024).result()
+  result = simulator.run(qc, shots=100).result()
   counts = result.get_counts()
+  plot_histogram(counts)
+  plt.show()
   single_result = simulator.run(qc, shots=1).result()
   single_counts = single_result.get_counts()
   # Extract the random bits string from the single outcome
